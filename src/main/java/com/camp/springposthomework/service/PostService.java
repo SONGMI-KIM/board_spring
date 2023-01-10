@@ -2,6 +2,7 @@ package com.camp.springposthomework.service;
 
 
 import com.camp.springposthomework.dto.PostRequestDto;
+import com.camp.springposthomework.dto.PostResponseDto;
 import com.camp.springposthomework.entity.Post;
 import com.camp.springposthomework.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,26 +18,26 @@ public class PostService {
 
     // 전체 게시글 목록조회
     @Transactional(readOnly = true)
-    public List<Post> getPosts(){
-        return postRepository.findAllByOrderByModifiedAtDesc();
+    public List<PostResponseDto> getPosts(){
+        postRepository.findAllByOrderByModifiedAtDesc();
         //findAllByOrderByModifiedAtDesc() 자동으로 생성되지 않는 메소드 사용하려면 repository에 작성해줘야함
     }
 
     // 게시글 작성
     @Transactional
-    public Post creatPost(PostRequestDto postRequestDto){
+    public PostResponseDto creatPost(PostRequestDto postRequestDto){
         Post post = new Post(postRequestDto);
         postRepository.save(post);
-        return post;
+        return new PostResponseDto(post);
     }
 
     // 선택한 게시글 조회
     @Transactional(readOnly = true)
-    public List<Post> getPost(Long id){
-        postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("선택한 게시물이 존재하지 않습니다.")
+    public PostResponseDto getPost(Long id){
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("게시글이 존재하지 않습니다.")
         );
-        return getPosts();
+        return new PostResponseDto(post);
     }
 
     // 선택한 게시글 수정

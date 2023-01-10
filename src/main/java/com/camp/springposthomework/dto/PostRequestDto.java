@@ -14,6 +14,5 @@ public class PostRequestDto {
     private String author;
     private String password;
 
-
     }
 

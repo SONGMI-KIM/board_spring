@@ -2,6 +2,7 @@ package com.camp.springposthomework.controller;
 
 
 import com.camp.springposthomework.dto.PostRequestDto;
+import com.camp.springposthomework.dto.PostResponseDto;
 import com.camp.springposthomework.entity.Post;
 import com.camp.springposthomework.service.PostService;
 import lombok.Getter;
@@ -18,21 +19,21 @@ public class PostController {
 
     private final PostService postService;
 
-    // 전체 게시글 목록조회 -OK
+    // 전체 게시글 목록조회
     @GetMapping("api/posts")
-    public List<Post> getPosts(){
+    public List<PostResponseDto> getPosts(){
         return postService.getPosts();
     }
 
     // 게시글 작성 -OK
    @PostMapping("/api/posts")
-    public Post creatPost(@RequestBody PostRequestDto postRequestDto){
+    public PostResponseDto creatPost(@RequestBody PostRequestDto postRequestDto){
         return postService.creatPost(postRequestDto);
    }
 
     // 선택한 게시글 조회
     @GetMapping("/api/posts{id}")
-    public List<Post> getPost(@PathVariable Long id){
+    public PostResponseDto getPost(@PathVariable Long id){
         return postService.getPost(id);
     }
 

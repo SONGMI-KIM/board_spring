@@ -46,8 +46,8 @@ public class Post extends Timestamped {
         this.title = postRequestDto.getTitle();
         this.content = postRequestDto.getContent();
         this.author = postRequestDto.getAuthor();
-        this.password = postRequestDto.getPassword();
-    }// 각자 정보가 뭘 정확하게 받아와서 보여주는지 공부가 필요할 것 같다.너무 헷갈려 ㅠ_ㅠ
+        //this.password = postRequestDto.getPassword();
+    }
 
     //update 메소드
     public void updatePost(PostRequestDto postRequestDto){
