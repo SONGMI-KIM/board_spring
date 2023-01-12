@@ -7,21 +7,22 @@ import java.time.LocalDateTime;
 
 @Getter
 public class PostResponseDto {
+
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+    private Long id;
     private String title;
     private String content;
     private String author;
 
-    //private String password;
-    private LocalDateTime createdimeAt;
-    private LocalDateTime modifiedAt;
 
-    //생성자
     public PostResponseDto(Post post) {
+        this.createdAt = post.getCreatedAt();
+        this.modifiedAt = post.getModifiedAt();
+        this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.author = post.getAuthor();
-        //this.password = post.getPassword();
-        this.createdimeAt = post.getCreatedAt();
-        this.modifiedAt = post.getModifiedAt();
     }
+
 }
