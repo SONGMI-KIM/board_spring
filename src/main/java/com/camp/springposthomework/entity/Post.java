@@ -43,17 +43,20 @@ public class Post extends Timestamped {
     // Dto 생성에 따라 변경된 생성자
     // 중요) Dto로 정보를 받으면 다른 정보가 변경되는게 아니라 본 클래스에 생성자만 변경된다!
     public Post(PostRequestDto postRequestDto) {
+        this.id = postRequestDto.getId();
         this.title = postRequestDto.getTitle();
         this.content = postRequestDto.getContent();
         this.author = postRequestDto.getAuthor();
-        //this.password = postRequestDto.getPassword();
+        this.password = postRequestDto.getPassword();
     }
 
+
     //update 메소드
-    public void updatePost(PostRequestDto postRequestDto){
+    public void updatePost(Long id, PostRequestDto postRequestDto){
         this.title = postRequestDto.getTitle();
         this.content = postRequestDto.getContent();
         this.author =postRequestDto.getAuthor();
+        this.password = postRequestDto.getPassword();
     }
 
 }

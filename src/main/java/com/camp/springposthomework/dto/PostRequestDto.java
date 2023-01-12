@@ -1,5 +1,6 @@
 package com.camp.springposthomework.dto;
 
+import com.camp.springposthomework.entity.Post;
 import lombok.Getter;
 
 
@@ -9,10 +10,12 @@ import lombok.Getter;
 
 @Getter
 public class PostRequestDto {
+
+    private Long id;
     private String title;
     private String content;
-    private String author;
-    private String password;
+   private String author;
+   private String password;
 
     }
 
